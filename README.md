@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+# MERN Ecommerce
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+An ecommerce store built with MERN stack, and utilizes third party API's. This ecommerce store enable three main different flows or implementations:
 
-In the project directory, you can run:
+1. Buyers browse the store categories, products and brands
+2. Sellers or Merchants manage their own brand component
+3. Admins manage and control the entire store components 
 
-### `npm start`
+### Features:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  * Node provides the backend environment for this application
+  * Express middleware is used to handle requests, routes
+  * Mongoose schemas to model the application data
+  * React for displaying UI components
+  * Redux to manage application's state
+  * Redux Thunk middleware to handle asynchronous redux actions
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Demo
 
-### `npm test`
+This application is deployed on Vercel Please check it out :smile: [here](https://mern-store-gold.vercel.app).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+See admin dashboard [demo](https://mernstore-bucket.s3.us-east-2.amazonaws.com/admin.mp4)
 
-### `npm run build`
+## Docker Guide
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run this project locally you can use docker compose provided in the repository. Here is a guide on how to run this project locally using docker compose.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Clone the repository
+```
+git clone https://github.com/mohamedsamara/mern-ecommerce.git
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Edit the dockercompose.yml file and update the the values for MONGO_URI and JWT_SECRET
 
-### `npm run eject`
+Then simply start the docker compose:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+docker-compose build
+docker-compose up
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Database Seed
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* The seed command will create an admin user in the database
+* The email and password are passed with the command as arguments
+* Like below command, replace brackets with email and password. 
+* For more information, see code [here](server/utils/seed.js)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+npm run seed:db [email-***@****.com] [password-******] // This is just an example.
+```
 
-## Learn More
+## Install
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`npm install` in the project root will install dependencies in both `client` and `server`. [See package.json](package.json)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Some basic Git commands are:
 
-### Code Splitting
+```
+git clone https://github.com/mohamedsamara/mern-ecommerce.git
+cd project
+npm install
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## ENV
 
-### Analyzing the Bundle Size
+Create `.env` file for both client and server. See examples:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+[Frontend ENV](client/.env.example)
 
-### Making a Progressive Web App
+[Backend ENV](server/.env.example)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## Vercel Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Both frontend and backend are deployed on Vercel from the same repository. When deploying on Vercel, make sure to specifiy the root directory as `client` and `server` when importing the repository. See [client vercel.json](client/vercel.json) and [server vercel.json](server/vercel.json).
 
-### Deployment
+## Start development
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+```
+npm run dev
+```
 
-### `npm run build` fails to minify
+## Languages & tools
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [Node](https://nodejs.org/en/)
+
+- [Express](https://expressjs.com/)
+
+- [Mongoose](https://mongoosejs.com/)
+
+- [React](https://reactjs.org/)
+
+- [Webpack](https://webpack.js.org/)
+
+
+### Code Formatter
+
+- Add a `.vscode` directory
+- Create a file `settings.json` inside `.vscode`
+- Install Prettier - Code formatter in VSCode
+- Add the following snippet:  
+
+```json
+
+    {
+      "editor.formatOnSave": true,
+      "prettier.singleQuote": true,
+      "prettier.arrowParens": "avoid",
+      "prettier.jsxSingleQuote": true,
+      "prettier.trailingComma": "none",
+      "javascript.preferences.quoteStyle": "single",
+    }
+
+```
+
